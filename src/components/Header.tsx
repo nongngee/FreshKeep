@@ -23,17 +23,6 @@ export function Header({ user, onLogin, onLogout }: HeaderProps) {
 
         {/* Right side actions */}
         <div className="flex items-center gap-2">
-          {/* Email Preview Link */}
-          <Link
-            href="/preview-email"
-            target="_blank"
-            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-full bg-emerald-50 hover:bg-emerald-100 text-emerald-800 text-xs font-medium border border-emerald-200/60 transition-colors"
-            title="ดูตัวอย่างอีเมลแจ้งเตือน"
-          >
-            <Mail size={14} />
-            <span className="hidden sm:inline">พรีวิวอีเมล</span>
-          </Link>
-
           {/* User Profile or Login */}
           {user ? (
             <div className="flex items-center gap-2 pl-1">
