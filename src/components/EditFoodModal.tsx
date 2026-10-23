@@ -212,8 +212,8 @@ export function EditFoodModal({ item, isOpen, onClose, onSave }: EditFoodModalPr
               className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 text-sm bg-slate-50/50"
             >
               <option value="chiller">🧊 ช่องแช่ธรรมดา</option>
-              <option value="freezer">❄️ ช่องแช่แข็ง (ฟรีซ)</option>
-              <option value="pantry">🧺 นอกตู้เย็น / ชั้นวาง</option>
+              <option value="freezer">❄️ ช่องแช่แข็ง</option>
+              <option value="pantry">🧺 นอกตู้เย็น</option>
             </select>
           </div>
 
@@ -235,7 +235,6 @@ export function EditFoodModal({ item, isOpen, onClose, onSave }: EditFoodModalPr
               type="submit"
               className="w-full py-3.5 px-4 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-2xl shadow-lg shadow-emerald-600/20 transition-all flex items-center justify-center gap-2 text-sm"
             >
-              <Save size={16} />
               <span>บันทึกการแก้ไข</span>
             </button>
           </div>

@@ -212,7 +212,7 @@ export default function Home() {
             updatedAt: inserted.updated_at,
           };
           setItems([newItem, ...items]);
-          showToast(`✨ บันทึก "${newItem.name}" ลงฐานข้อมูล Supabase แล้ว`);
+          showToast(`บันทึก "${newItem.name}" เข้าตู้เย็นแล้ว`);
           return;
         }
       } catch (err: any) {
@@ -230,7 +230,7 @@ export default function Home() {
       updatedAt: new Date().toISOString(),
     };
     saveLocalItems([newItem, ...items]);
-    showToast(`✨ เพิ่ม "${newItem.name}" ลงในตู้เย็นแล้ว`);
+    showToast(`เพิ่ม "${newItem.name}" ลงในตู้เย็นแล้ว`);
   };
 
   // Edit Item Handler
@@ -255,7 +255,7 @@ export default function Home() {
       }
     }
     setItems(items.map((i) => (i.id === updated.id ? updated : i)));
-    showToast(`✏️ อัปเดตข้อมูล "${updated.name}" แล้ว`);
+    showToast(`อัปเดตข้อมูล "${updated.name}" แล้ว`);
   };
 
   // Delete Item Handler
@@ -269,7 +269,7 @@ export default function Home() {
       }
     }
     setItems(items.filter((i) => i.id !== id));
-    showToast(`🗑️ ลบ "${target?.name || 'รายการ'}" ออกแล้ว`);
+    showToast(`ลบ "${target?.name || 'รายการ'}" ออกแล้ว`);
   };
 
   // Mark Consumed Handler
@@ -283,7 +283,7 @@ export default function Home() {
       }
     }
     setItems(items.filter((i) => i.id !== id));
-    showToast(`🎉 ยอดเยี่ยม! ทาน "${target?.name}" หมดเรียบร้อย`);
+    showToast(`ยอดเยี่ยม! ทาน "${target?.name}" หมดเรียบร้อย`);
   };
 
   // Counts
@@ -431,7 +431,7 @@ export default function Home() {
           </div>
         ) : (
           <div className="py-14 text-center bg-white/70 rounded-3xl border border-dashed border-emerald-200/80 p-6 shadow-xs">
-            <div className="text-4xl mb-3">🧊✨</div>
+            <div className="text-4xl mb-3">🧊</div>
             <h4 className="text-base font-bold text-emerald-950 mb-1">ตู้เย็นของคุณยังว่างอยู่</h4>
             <p className="text-xs text-slate-500 mb-5 max-w-xs mx-auto leading-relaxed">
               ยังไม่มีรายการอาหารในตู้เย็น กดปุ่มด้านล่างเพื่อเริ่มถ่ายภาพหรือบันทึกของสดชิ้นแรกได้เลย!
@@ -453,7 +453,7 @@ export default function Home() {
           className="pointer-events-auto py-3 px-7 bg-emerald-700 hover:bg-emerald-800 active:bg-emerald-900 text-white font-bold rounded-full shadow-xl shadow-emerald-900/30 flex items-center gap-2 text-sm transition-transform active:scale-95"
         >
           <Plus size={18} strokeWidth={2.5} />
-          <span>เพิ่มอาหาร +</span>
+          <span>เพิ่มอาหาร</span>
         </button>
       </div>
 
