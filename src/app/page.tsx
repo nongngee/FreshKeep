@@ -44,23 +44,57 @@ export default function Home() {
     // Get current session
     supabase.auth.getSession().then(({ data: { session } }) => {
       if (session?.user) {
+        const uEmail = session.user.email || '';
+        const uName = session.user.user_metadata?.full_name || session.user.user_metadata?.name || uEmail.split('@')[0] || 'ผู้ใช้งาน';
+        const uAvatar = session.user.user_metadata?.avatar_url;
+
         setUser({
           id: session.user.id,
-          email: session.user.email || '',
-          name: session.user.user_metadata?.full_name || session.user.user_metadata?.name || session.user.email?.split('@')[0] || 'ผู้ใช้งาน',
-          avatarUrl: session.user.user_metadata?.avatar_url,
+          email: uEmail,
+          name: uName,
+          avatarUrl: uAvatar,
         });
+
+        // Ensure user profile exists in profiles table for notification delivery
+        if (supabase) {
+          supabase.from('profiles').upsert({
+            id: session.user.id,
+            email: uEmail,
+            display_name: uName,
+            avatar_url: uAvatar || null,
+            updated_at: new Date().toISOString(),
+          }, { onConflict: 'id' }).then(({ error }) => {
+            if (error) console.error('Error syncing profile:', error);
+          });
+        }
       }
     });
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
       if (session?.user) {
+        const uEmail = session.user.email || '';
+        const uName = session.user.user_metadata?.full_name || session.user.user_metadata?.name || uEmail.split('@')[0] || 'ผู้ใช้งาน';
+        const uAvatar = session.user.user_metadata?.avatar_url;
+
         setUser({
           id: session.user.id,
-          email: session.user.email || '',
-          name: session.user.user_metadata?.full_name || session.user.user_metadata?.name || session.user.email?.split('@')[0] || 'ผู้ใช้งาน',
-          avatarUrl: session.user.user_metadata?.avatar_url,
+          email: uEmail,
+          name: uName,
+          avatarUrl: uAvatar,
         });
+
+        // Ensure user profile exists in profiles table
+        if (supabase) {
+          supabase.from('profiles').upsert({
+            id: session.user.id,
+            email: uEmail,
+            display_name: uName,
+            avatar_url: uAvatar || null,
+            updated_at: new Date().toISOString(),
+          }, { onConflict: 'id' }).then(({ error }) => {
+            if (error) console.error('Error syncing profile on auth change:', error);
+          });
+        }
       } else {
         setUser(null);
       }

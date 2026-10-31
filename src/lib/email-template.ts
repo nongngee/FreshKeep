@@ -117,7 +117,7 @@ export function generateExpiryAlertEmailHtml({
 
       <!-- Call to Action -->
       <div class="btn-container">
-        <a href="http://localhost:3000" class="btn">เปิดดูตู้เย็นของคุณ</a>
+        <a href="https://fresh-keep-ten.vercel.app" class="btn">เปิดดูตู้เย็นของคุณ</a>
       </div>
     </div>
 
