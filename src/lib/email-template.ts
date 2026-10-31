@@ -51,7 +51,7 @@ export function generateExpiryAlertEmailHtml({
   <div class="container">
     <!-- Header -->
     <div class="header">
-      <div style="font-size: 38px;">🥬🧊</div>
+      <div style="font-size: 38px;">🥬🥩</div>
       <div class="logo-title">FreshKeep Alert</div>
       <div class="tagline">เตือนความสด ตรวจสอบตู้เย็นก่อนของจะเสีย</div>
     </div>
@@ -67,7 +67,7 @@ export function generateExpiryAlertEmailHtml({
         expiringSoonItems.length > 0
           ? `
         <div class="section-title title-warning">
-          ⏰ อาหารใกล้หมดอายุ (ภายใน 3 วัน)
+          ⏰ อาหารใกล้หมดอายุ ในอีก 3 วัน
         </div>
         ${expiringSoonItems
           .map(
